@@ -11,18 +11,18 @@ import UIKit
 public class NibView: UIView {
     
     weak var view: UIView!
-    
+    @objc
     override public init(frame: CGRect) {
         super.init(frame: frame)
         nibSetup()
     }
-    
+    @objc
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    
-    fileprivate func nibSetup() {
+    @objc
+    public func nibSetup() {
         view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

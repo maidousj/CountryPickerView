@@ -130,7 +130,8 @@ public extension CountryPickerViewDataSource {
     }
     
     func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool {
-        return false
+        //修改默认显示phonecode (+86)
+        return true
     }
     
     func showCountryCodeInList(in countryPickerView: CountryPickerView) -> Bool {

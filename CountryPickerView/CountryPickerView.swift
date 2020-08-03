@@ -47,7 +47,7 @@ public class CountryPickerView: NibView {
     @IBOutlet public weak var countryDetailsLabel: UILabel!
     
     // Show/Hide the country code on the view.
-    public var showCountryCodeInView = true {
+    public var showCountryCodeInView = false {
         didSet { setup() }
     }
     
@@ -92,17 +92,24 @@ public class CountryPickerView: NibView {
         }
     }
     
+    @objc
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
+    @objc
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
-    func setup() {
+    @objc
+    public func getText() -> String{
+        return countryDetailsLabel!.text ?? "";
+    }
+    
+    public func setup() {
         flagImageView.image = selectedCountry.flag
         countryDetailsLabel.font = font
         countryDetailsLabel.textColor = textColor
@@ -198,6 +205,7 @@ extension CountryPickerView {
         }
     }
     
+    @objc
     public func setCountryByCode(_ code: String) {
         if let country = countries.first(where: { $0.code == code }) {
             selectedCountry = country
